@@ -129,9 +129,9 @@ a{text-decoration:none}
 .site-header.scrolled{background:rgba(255,255,255,.98);box-shadow:0 4px 32px rgba(8,13,20,.09);border-bottom-color:var(--border)}
 .nav-inner{max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:var(--header-h);gap:16px}
 .brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
-.brand-mark{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,#1d4ed8,#3b82f6);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(29,78,216,.3);flex-shrink:0;transition:transform .3s var(--ease),box-shadow .3s}
-.brand-mark i{font-size:18px;color:#fff}
-.brand:hover .brand-mark{transform:translateY(-2px);box-shadow:0 8px 24px rgba(29,78,216,.4)}
+.brand-mark{width:54px;height:54px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 14px 44px rgba(14,91,255,.12);border:1px solid rgba(14,91,255,.12);flex-shrink:0;transition:transform .3s var(--ease),box-shadow .3s,border-color .3s;overflow:hidden;}
+.brand-mark img{width:100%;height:100%;object-fit:contain;display:block;}
+.brand:hover .brand-mark{transform:none;box-shadow:0 14px 44px rgba(14,91,255,.12);border-color:rgba(14,91,255,.12)}
 .brand-name{font-family:"Sora",sans-serif;font-size:1.12rem;font-weight:800;color:var(--black);display:block;white-space:nowrap;letter-spacing:-.01em}
 .brand-name span{color:var(--blue)}
 .brand-sub{display:block;font-size:.68rem;color:var(--muted);margin-top:1px;white-space:nowrap;letter-spacing:.02em}
@@ -165,17 +165,9 @@ a{text-decoration:none}
 .breadcrumb-inner .sep{color:var(--border)}
 .breadcrumb-inner .current{color:var(--ink);font-weight:600}
 
-/* STICKY TABS */
-.about-tabs{background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);position:sticky;top:var(--header-h);z-index:500;box-shadow:0 2px 12px rgba(8,13,20,.04)}
-.tabs-inner{max-width:1320px;margin:0 auto;padding:0 24px;display:flex;overflow-x:auto;scrollbar-width:none}
-.tabs-inner::-webkit-scrollbar{display:none}
-.tab-link{padding:16px 20px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:3px solid transparent;white-space:nowrap;transition:color .25s,border-color .25s;margin-bottom:-1px;display:flex;align-items:center;gap:7px}
-.tab-link i{font-size:12px;opacity:.7}
-.tab-link:hover{color:var(--blue)}
-.tab-link.active{color:var(--blue);border-bottom-color:var(--blue)}
 
 /* HERO */
-.about-hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#080d14 0%,#0f1e3a 50%,#1d4ed8 100%);min-height:540px;display:flex;align-items:center}
+.about-hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#080d14 0%,#0f1e3a 50%,#1d4ed8 100%);min-height:420px;display:flex;align-items:center;padding-top:40px;padding-bottom:40px}
 .hero-bg-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .hero-particle{position:absolute;border-radius:50%;background:rgba(59,130,246,.12);animation:particleFloat linear infinite}
 @keyframes particleFloat{0%{transform:translateY(0) scale(1);opacity:0}10%{opacity:1}90%{opacity:.6}100%{transform:translateY(-120vh) scale(.5);opacity:0}}
@@ -184,9 +176,8 @@ a{text-decoration:none}
 .hero-orb-2{width:400px;height:400px;bottom:-150px;left:-80px;animation:orbPulse 6s ease-in-out infinite reverse}
 @keyframes orbPulse{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.15);opacity:1}}
 .hero-grid-lines{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(59,130,246,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,.04) 1px,transparent 1px);background-size:60px 60px}
-.hero-inner{max-width:1320px;margin:0 auto;padding:88px 24px 88px;position:relative;z-index:2;display:grid;grid-template-columns:1fr 420px;gap:64px;align-items:center;width:100%}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.65);font-weight:700;margin-bottom:20px;padding:6px 16px;background:rgba(255,255,255,.07);border-radius:999px;border:1px solid rgba(255,255,255,.12)}
-.hero-eyebrow::before{content:"";display:block;width:20px;height:1px;background:rgba(255,255,255,.5)}
+.hero-inner{max-width:1320px;margin:0 auto;padding:72px 24px 72px;position:relative;z-index:2;display:grid;grid-template-columns:1fr 420px;gap:56px;align-items:center;width:100%}
+@media(max-width:768px){.about-hero{min-height:auto;padding-top:48px;padding-bottom:36px;align-items:flex-start}.hero-inner{padding:48px 20px 32px;grid-template-columns:1fr;gap:32px}}
 .hero-title{font-family:"Cormorant Garamond",serif;font-size:clamp(32px,5vw,68px);font-weight:600;color:#fff;line-height:1.1;margin-bottom:20px;text-shadow:0 2px 40px rgba(0,0,0,.3)}
 .hero-title em{font-style:italic;color:var(--accent)}
 .hero-desc{font-size:.95rem;color:rgba(255,255,255,.72);line-height:1.85;max-width:520px;margin-bottom:36px}
@@ -207,7 +198,7 @@ a{text-decoration:none}
 .scroll-mouse{width:24px;height:36px;border:1.5px solid rgba(255,255,255,.25);border-radius:12px;display:flex;align-items:flex-start;justify-content:center;padding-top:6px}
 .scroll-wheel{width:3px;height:7px;background:#fff;border-radius:2px;opacity:.5;animation:scrollDown 2s ease-in-out infinite}
 @keyframes scrollDown{0%{transform:translateY(0);opacity:.5}60%{transform:translateY(10px);opacity:.15}100%{transform:translateY(0);opacity:.5}}
-@media(max-width:1024px){.hero-inner{grid-template-columns:1fr;gap:48px}.hero-stats-grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:1024px){.hero-inner{grid-template-columns:1fr;gap:48px;align-items:flex-start}.hero-stats-grid{grid-template-columns:repeat(4,1fr)}}
 @media(max-width:700px){.hero-stats-grid{grid-template-columns:1fr 1fr}}
 
 /* TRUST STRIP */
@@ -242,10 +233,6 @@ a{text-decoration:none}
 .story-p{font-size:.9rem;color:var(--text-mid);line-height:1.9;margin-bottom:16px}
 .vision-quote{font-style:italic;color:var(--ink);font-size:.95rem;line-height:1.75;border-left:3px solid var(--blue);background:var(--blue-soft);border-radius:0 12px 12px 0;padding:18px 22px;margin:24px 0;position:relative;overflow:hidden}
 .vision-quote::before{content:"\201C";position:absolute;top:-8px;right:14px;font-family:"Cormorant Garamond",serif;font-size:80px;color:var(--blue);opacity:.12;line-height:1}
-.story-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
-.story-badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--border);border-radius:999px;padding:8px 16px;font-size:.75rem;font-weight:600;color:var(--ink);box-shadow:var(--sh);transition:all .25s var(--ease)}
-.story-badge:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px);box-shadow:var(--sh-lg)}
-.story-badge i{color:var(--blue)}
 .story-images{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:12px}
 .story-img-main{grid-column:1/-1;overflow:hidden;border-radius:var(--r);position:relative;box-shadow:var(--sh-xl)}
 .story-img-main img{width:100%;height:280px;object-fit:cover;display:block;transition:transform .7s var(--ease)}
@@ -255,11 +242,6 @@ a{text-decoration:none}
 .story-img-sm:hover img{transform:scale(1.06)}
 .story-img-badge{position:absolute;bottom:14px;left:14px;background:rgba(8,13,20,.7);backdrop-filter:blur(8px);color:#fff;font-size:.68rem;font-weight:600;padding:7px 14px;border-radius:999px;display:flex;align-items:center;gap:6px;z-index:2;border:1px solid rgba(255,255,255,.12)}
 .story-img-badge i{color:var(--gold)}
-.story-stats-row{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:20px}
-.s-stat{background:#fff;border:1px solid var(--border);border-radius:14px;padding:24px 18px;text-align:center;box-shadow:var(--sh);transition:all .35s var(--ease);cursor:default}
-.s-stat:hover{box-shadow:var(--sh-lg);transform:translateY(-4px);border-color:var(--blue-border)}
-.s-stat-num{font-family:"Sora",sans-serif;font-size:1.8rem;font-weight:800;background:linear-gradient(135deg,var(--blue),var(--blue-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.s-stat-label{font-size:.72rem;color:var(--text-light);margin-top:5px;font-weight:500;line-height:1.45}
 @media(max-width:1000px){.story-section{grid-template-columns:1fr;gap:48px}}
 
 /* MISSION BANNER */
@@ -273,20 +255,22 @@ a{text-decoration:none}
 @media(max-width:768px){.mission-banner{padding:44px 28px}}
 
 /* VALUES */
-.values-section{padding:0 24px 96px;max-width:1320px;margin:0 auto}
-.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.value-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:32px 26px;box-shadow:var(--sh);transition:all .4s var(--ease);position:relative;overflow:hidden;cursor:default;display:flex;flex-direction:column;align-items:center;text-align:center}
-.value-card::before{content:"";position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--blue),var(--blue-light));transform:scaleX(0);transition:transform .4s var(--ease)}
-.value-card::after{content:"";position:absolute;inset:0;border-radius:20px;background:linear-gradient(135deg,rgba(29,78,216,.04),transparent);opacity:0;transition:opacity .4s;pointer-events:none}
-.value-card:hover{box-shadow:0 24px 64px rgba(29,78,216,.14);transform:translateY(-8px);border-color:var(--blue-border)}
-.value-card:hover::before{transform:scaleX(1)}
-.value-card:hover::after{opacity:1}
-.value-icon{width:58px;height:58px;background:var(--blue-soft);border:1px solid var(--blue-border);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--blue);margin:0 auto 18px;transition:all .35s var(--ease);box-shadow:0 6px 18px rgba(29,78,216,.1)}
-.value-card:hover .value-icon{background:linear-gradient(135deg,var(--blue),var(--blue-light));color:#fff;transform:scale(1.1) rotate(-5deg);border-color:transparent;box-shadow:0 12px 30px rgba(29,78,216,.3)}
-.value-title{font-family:"Cormorant Garamond",serif;font-size:1.25rem;font-weight:600;color:var(--black);margin-bottom:10px}
-.value-desc{font-size:.82rem;color:var(--muted);line-height:1.75}
-@media(max-width:900px){.values-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:550px){.values-grid{grid-template-columns:1fr}}
+.values-section{padding:0 24px 96px;max-width:1480px;margin:0 auto}
+.values-grid{display:grid;grid-template-columns:repeat(5,minmax(240px,1fr));gap:24px;justify-content:center}
+.value-card{background:#fff;border:1px solid rgba(15,23,42,.08);border-radius:24px;padding:28px 24px;box-shadow:0 18px 40px rgba(15,23,42,.08);transition:transform .4s ease,box-shadow .4s ease,border-color .4s ease,background-color .4s ease;position:relative;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;align-items:center;text-align:center;min-height:240px}
+.value-card::before{content:"";position:absolute;inset:0;border-radius:24px;background:radial-gradient(circle at top center,rgba(59,130,246,.08),transparent 30%);opacity:0;transition:opacity .4s ease;pointer-events:none}
+.value-card::after{content:"";position:absolute;bottom:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,var(--blue),var(--blue-light));transform:scaleX(0);transform-origin:left center;transition:transform .4s ease;pointer-events:none}
+.value-card:hover{transform:translateY(-10px);box-shadow:0 28px 60px rgba(15,23,42,.18);border-color:rgba(59,130,246,.35);background:rgba(255,255,255,.97)}
+.value-card:hover::before{opacity:1}
+.value-card:hover::after{transform:scaleX(1)}
+.value-icon{width:52px;height:52px;background:linear-gradient(135deg,rgba(59,130,246,.12),rgba(147,197,253,.14));border:1px solid rgba(59,130,246,.16);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--blue);margin:0 auto 18px;transition:transform .35s ease,background .35s ease,box-shadow .35s ease;box-shadow:0 8px 22px rgba(59,130,246,.12)}
+.value-card:hover .value-icon{background:linear-gradient(135deg,var(--blue),var(--blue-light));color:#fff;transform:scale(1.1) rotate(-5deg);border-color:transparent;box-shadow:0 16px 42px rgba(59,130,246,.28)}
+.value-title{font-family:"Cormorant Garamond",serif;font-size:1.18rem;font-weight:600;color:var(--black);margin-bottom:12px}
+.value-desc{font-size:.84rem;color:var(--muted);line-height:1.8}
+@media(max-width:1200px){.values-grid{grid-template-columns:repeat(4,minmax(220px,1fr))}}
+@media(max-width:900px){.values-grid{grid-template-columns:repeat(3,minmax(220px,1fr))}}
+@media(max-width:700px){.values-grid{grid-template-columns:repeat(2,minmax(220px,1fr))}}
+@media(max-width:520px){.values-grid{grid-template-columns:1fr}}
 
 /* BEHIND THE SCENES SLIDER */
 .peek-section{padding:0 0 96px}
@@ -431,8 +415,10 @@ footer{background:#080d14;color:#94a3b8;padding:60px 20px 28px;border-top:1px so
 .footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
 .footer-brand{font-family:"Sora",sans-serif;font-size:1.1rem;font-weight:800;color:#fff;display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-bottom:14px}
 .footer-brand .brand-row{display:flex;align-items:center;gap:10px}
-.footer-brand .f-mark{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--blue),var(--blue-light));display:flex;align-items:center;justify-content:center}
-.footer-brand .f-mark i{color:#fff;font-size:16px}
+.footer-brand .f-mark{width:42px;height:42px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(14,91,255,.12);border:1px solid rgba(14,91,255,.12);overflow:hidden;}
+.footer-brand .f-mark img{width:80%;height:80%;object-fit:contain;display:block;}
+.footer-brand .f-mark i{display:none}
+.footer-brand .brand-name .brand-aiva{color:#fff}
 .footer-brand .brand-name span{color:#60a5fa}
 .footer-brand .brand-sub{font-size:.76rem;color:#64748b;margin-top:4px;font-weight:500}
 .footer-desc{font-size:.8rem;line-height:1.85;margin-bottom:20px;max-width:280px}
@@ -499,7 +485,7 @@ footer{background:#080d14;color:#94a3b8;padding:60px 20px 28px;border-top:1px so
 <header class="site-header" id="siteHeader">
   <nav class="nav-inner">
     <a class="brand" href="index.html">
-      <div class="brand-mark"><i class="fa-solid fa-leaf"></i></div>
+      <div class="brand-mark"><img src="assets/logo.png" alt="Aiva Wellness logo"></div>
       <div>
         <span class="brand-name">Aiva<span>Wellness</span></span>
         <small class="brand-sub">Premium Healthcare &amp; Wellness</small>
@@ -531,18 +517,6 @@ footer{background:#080d14;color:#94a3b8;padding:60px 20px 28px;border-top:1px so
   </nav>
 </div>
 
-<!-- STICKY TABS -->
-<div class="about-tabs">
-  <div class="tabs-inner" id="aboutTabs">
-    <a href="#story" class="tab-link active"><i class="fa-solid fa-circle-info"></i> Our Story</a>
-    <a href="#values" class="tab-link"><i class="fa-solid fa-heart"></i> Values</a>
-    <a href="#peek" class="tab-link"><i class="fa-solid fa-camera"></i> Behind the Scenes</a>
-    <a href="#journey" class="tab-link"><i class="fa-solid fa-route"></i> Journey</a>
-    <a href="#trust" class="tab-link"><i class="fa-solid fa-shield-halved"></i> Why Trust Us</a>
-    <a href="#testimonials" class="tab-link"><i class="fa-solid fa-quote-left"></i> Reviews</a>
-  </div>
-</div>
-
 <!-- HERO -->
 <section class="about-hero" id="top">
   <div class="hero-bg-particles" id="heroParticles"></div>
@@ -551,7 +525,6 @@ footer{background:#080d14;color:#94a3b8;padding:60px 20px 28px;border-top:1px so
   <div class="hero-grid-lines"></div>
   <div class="hero-inner">
     <div class="hero-left">
-      <div class="hero-eyebrow"><i class="fa-solid fa-mountain"></i> From the Hills of Himachal Pradesh</div>
       <h1 class="hero-title">Built on Purity,<br>Proof &amp; <em>People</em></h1>
       <p class="hero-desc">Aiva Wellness began with a simple frustration &mdash; why was it so hard to find supplements you could actually trust? Today we formulate, test, and ship science-backed wellness products from our home in Solan, Himachal Pradesh, to thousands of households across India.</p>
       <div class="hero-cta-row">
@@ -612,11 +585,7 @@ footer{background:#080d14;color:#94a3b8;padding:60px 20px 28px;border-top:1px so
       <p class="story-p">Aiva Wellness is a direct-to-consumer healthcare and nutraceutical brand. We design every formulation with input from nutrition experts, manufacture in an FSSAI-licensed facility, and send each batch for independent lab testing before it ever reaches your doorstep.</p>
       <p class="story-p">No trend-chasing, no inflated claims &mdash; just honestly labelled supplements that do what they say.</p>
       <div class="vision-quote">&ldquo;To make trustworthy wellness ordinary &mdash; not a luxury, not a gamble, just something every Indian household can rely on.&rdquo;</div>
-      <div class="story-badges">
-        <span class="story-badge"><i class="fa-solid fa-certificate"></i> FSSAI Licensed</span>
-        <span class="story-badge"><i class="fa-solid fa-flask-vial"></i> Third-Party Lab Tested</span>
-        <span class="story-badge"><i class="fa-solid fa-mountain"></i> Made in Himachal Pradesh</span>
-      </div>
+
     </div>
     <div class="reveal-left">
       <div class="story-images">
@@ -630,12 +599,6 @@ footer{background:#080d14;color:#94a3b8;padding:60px 20px 28px;border-top:1px so
         <div class="story-img-sm">
           <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=600&q=80" alt="Wellness ritual"/>
         </div>
-      </div>
-      <div class="story-stats-row">
-        <div class="s-stat reveal d1"><div class="s-stat-num">25+</div><div class="s-stat-label">Products Across 11 Categories</div></div>
-        <div class="s-stat reveal d2"><div class="s-stat-num">10K+</div><div class="s-stat-label">Customers Served</div></div>
-        <div class="s-stat reveal d3"><div class="s-stat-num">4.8&#9733;</div><div class="s-stat-label">Average Customer Rating</div></div>
-        <div class="s-stat reveal d4"><div class="s-stat-num">100%</div><div class="s-stat-label">Genuine, Sealed Products</div></div>
       </div>
     </div>
   </div>
@@ -654,7 +617,7 @@ footer{background:#080d14;color:#94a3b8;padding:60px 20px 28px;border-top:1px so
   <div class="values-section">
     <div class="section-header">
       <span class="section-eyebrow"><i class="fa-solid fa-heart"></i> What We Stand For</span>
-      <h2 class="section-title">Six Values That Shape <span>Every Decision</span></h2>
+      <h2 class="section-title">Five Values That Shape <span>Every Decision</span></h2>
       <p class="section-sub">These aren&rsquo;t poster words &mdash; they&rsquo;re the criteria we use when choosing ingredients, pricing products, and responding to customers.</p>
     </div>
     <div class="values-grid">
@@ -667,11 +630,6 @@ footer{background:#080d14;color:#94a3b8;padding:60px 20px 28px;border-top:1px so
         <div class="value-icon"><i class="fa-solid fa-shield-halved"></i></div>
         <div class="value-title">Purity &amp; Safety</div>
         <div class="value-desc">FSSAI-licensed manufacturing and third-party lab testing on every batch &mdash; so what&rsquo;s on the label is exactly what&rsquo;s in the bottle.</div>
-      </div>
-      <div class="value-card reveal d3">
-        <div class="value-icon"><i class="fa-solid fa-eye"></i></div>
-        <div class="value-title">Radical Transparency</div>
-        <div class="value-desc">No hidden fillers, no inflated claims. Full ingredient panels and sourcing information are always available to you.</div>
       </div>
       <div class="value-card reveal d1">
         <div class="value-icon"><i class="fa-solid fa-heart"></i></div>
@@ -869,8 +827,8 @@ footer{background:#080d14;color:#94a3b8;padding:60px 20px 28px;border-top:1px so
       <div>
         <div class="footer-brand">
           <div class="brand-row">
-            <div class="f-mark"><i class="fa-solid fa-leaf"></i></div>
-            <span class="brand-name">Aiva<span>Wellness</span></span>
+            <div class="f-mark"><img src="assets/logo.png" alt="Aiva Wellness logo"></div>
+            <span class="brand-name"><span class="brand-aiva">Aiva</span><span>Wellness</span></span>
           </div>
           <small class="brand-sub">Premium Healthcare &amp; Wellness</small>
         </div>
@@ -878,7 +836,9 @@ footer{background:#080d14;color:#94a3b8;padding:60px 20px 28px;border-top:1px so
         <div class="footer-social">
           <a class="social-btn" href="https://www.instagram.com/aivawellness/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
           <a class="social-btn" href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a class="social-btn" href="https://www.linkedin.com/company/aivawellness" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
           <a class="social-btn" href="https://wa.me/917807751710" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a class="social-btn" href="https://www.amazon.in/stores/AivaWellness" target="_blank" aria-label="Amazon"><i class="fa-brands fa-amazon"></i></a>
           <a class="social-btn" href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
         </div>
       </div>
@@ -981,23 +941,6 @@ let ptx=0,ptDrag=false;
 pTrack.parentElement.addEventListener('touchstart',e=>{ptx=e.touches[0].clientX;ptDrag=false},{passive:true});
 pTrack.parentElement.addEventListener('touchmove',e=>{if(Math.abs(e.touches[0].clientX-ptx)>8)ptDrag=true},{passive:true});
 pTrack.parentElement.addEventListener('touchend',e=>{if(ptDrag&&Math.abs(e.changedTouches[0].clientX-ptx)>40)peekNav(e.changedTouches[0].clientX<ptx?1:-1);ptDrag=false});
-
-/* TABS SCROLL SPY */
-document.querySelectorAll('.tab-link').forEach(link=>{
-  link.addEventListener('click',function(e){
-    e.preventDefault();
-    const target=document.querySelector(this.getAttribute('href'));
-    if(target){
-      const off=document.querySelector('.about-tabs').offsetHeight+document.getElementById('siteHeader').offsetHeight;
-      window.scrollTo({top:target.getBoundingClientRect().top+window.scrollY-off-8,behavior:'smooth'});
-    }
-  });
-});
-const SPY=['story','values','peek','journey','trust','testimonials'].map(id=>document.getElementById(id)).filter(Boolean);
-const tabLinks=document.querySelectorAll('.tab-link');
-new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){tabLinks.forEach(l=>l.classList.remove('active'));const m=document.querySelector(`.tab-link[href="#${e.target.id}"]`);if(m)m.classList.add('active')}});
-},{rootMargin:'-35% 0px -60% 0px'}).observe&&SPY.forEach(s=>{new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){tabLinks.forEach(l=>l.classList.remove('active'));const m=document.querySelector(`.tab-link[href="#${e.target.id}"]`);if(m)m.classList.add('active')}});},{rootMargin:'-35% 0px -60% 0px'}).observe(s)});
 
 /* SCROLL REVEAL */
 const revEls=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');

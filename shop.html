@@ -165,9 +165,9 @@ h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2}
 .site-header.scrolled{background:rgba(255,255,255,.98);box-shadow:0 4px 32px rgba(8,13,20,.09);border-bottom-color:var(--border)}
 .nav-inner{max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:68px;gap:16px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
-.brand-mark{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,#1d4ed8,#3b82f6);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(29,78,216,.3);flex-shrink:0;transition:transform .3s var(--ease),box-shadow .3s}
-.brand-mark i{font-size:18px;color:#fff}
-.brand:hover .brand-mark{transform:translateY(-2px);box-shadow:0 8px 24px rgba(29,78,216,.4)}
+.brand-mark{width:54px;height:54px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 14px 44px rgba(14,91,255,.12);border:1px solid rgba(14,91,255,.12);flex-shrink:0;transition:transform .3s var(--ease),box-shadow .3s,border-color .3s;overflow:hidden;}
+.brand-mark img{width:100%;height:100%;object-fit:contain;display:block;}
+.brand:hover .brand-mark{transform:none;box-shadow:0 14px 44px rgba(14,91,255,.12);border-color:rgba(14,91,255,.12)}
 .brand-name{font-family:"Sora",sans-serif;font-size:1.12rem;font-weight:800;color:var(--black);display:block;white-space:nowrap;letter-spacing:-.01em}
 .brand-name span{color:var(--blue)}
 .brand-sub{display:block;font-size:.68rem;color:var(--muted);margin-top:1px;white-space:nowrap;letter-spacing:.02em}
@@ -589,8 +589,9 @@ footer{background:#080d14;color:#94a3b8;padding:60px 20px 28px;border-top:1px so
 .footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
 .footer-brand{font-family:"Sora",sans-serif;font-size:1.1rem;font-weight:800;color:#fff;display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-bottom:14px}
 .footer-brand .brand-row{display:flex;align-items:center;gap:10px}
-.footer-brand .f-mark{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--blue),var(--blue-light));display:flex;align-items:center;justify-content:center}
-.footer-brand .f-mark i{color:#fff;font-size:16px}
+.footer-brand .f-mark{width:42px;height:42px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(14,91,255,.12);border:1px solid rgba(14,91,255,.12);overflow:hidden;}
+.footer-brand .f-mark img{width:80%;height:80%;object-fit:contain;display:block;}
+.footer-brand .f-mark i{display:none}
 .footer-brand .brand-name .brand-aiva{color:#fff}
 .footer-brand .brand-name span{color:#60a5fa}
 .footer-brand .brand-sub{font-size:.76rem;color:#64748b;margin-top:4px;font-weight:500}
@@ -698,7 +699,7 @@ footer{background:#080d14;color:#94a3b8;padding:60px 20px 28px;border-top:1px so
 <header class="site-header" id="siteHeader">
   <nav class="nav-inner">
     <a class="brand" href="index.html">
-      <div class="brand-mark"><i class="fa-solid fa-leaf"></i></div>
+      <div class="brand-mark"><img src="assets/logo.png" alt="Aiva Wellness logo"></div>
       <div>
         <span class="brand-name">Aiva<span>Wellness</span></span>
         <small class="brand-sub">Premium Healthcare &amp; Wellness</small>
@@ -890,7 +891,7 @@ footer{background:#080d14;color:#94a3b8;padding:60px 20px 28px;border-top:1px so
       <div>
         <div class="footer-brand">
           <div class="brand-row">
-            <div class="f-mark"><i class="fa-solid fa-leaf"></i></div>
+            <div class="f-mark"><img src="assets/logo.png" alt="Aiva Wellness logo"></div>
             <span class="brand-name"><span class="brand-aiva">Aiva</span><span>Wellness</span></span>
           </div>
           <small class="brand-sub">Premium Healthcare &amp; Wellness</small>

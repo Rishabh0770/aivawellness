@@ -177,20 +177,22 @@ h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2}
   display:flex;align-items:center;justify-content:space-between;
   padding:0 24px;height:68px;gap:16px;
 }
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0}
 .brand-mark{
-  width:42px;height:42px;border-radius:10px;
-  background:linear-gradient(135deg,#1d4ed8,#3b82f6);
+  width:54px;height:54px;border-radius:50%;
+  background:#fff;
   display:flex;align-items:center;justify-content:center;
-  box-shadow:0 4px 14px rgba(29,78,216,.3);
+  box-shadow:0 14px 44px rgba(14,91,255,.12);
+  border:1px solid rgba(14,91,255,.12);
   flex-shrink:0;
-  transition:transform .3s var(--ease),box-shadow .3s;
+  transition:transform .3s var(--ease),box-shadow .3s,border-color .3s;
+  overflow:hidden;
 }
-.brand-mark i{font-size:18px;color:#fff}
-.brand:hover .brand-mark{transform:translateY(-2px);box-shadow:0 8px 24px rgba(29,78,216,.4)}
-.brand-name{font-family:"Sora",sans-serif;font-size:1.12rem;font-weight:800;color:var(--black);display:block;white-space:nowrap;letter-spacing:-.01em}
+.brand-mark img{width:100%;height:100%;object-fit:contain;display:block;}
+.brand:hover .brand-mark{transform:none;box-shadow:0 14px 44px rgba(14,91,255,.12);border-color:rgba(14,91,255,.12)}
+.brand-name{font-family:"Sora",sans-serif;font-size:1.15rem;font-weight:800;color:var(--black);display:block;white-space:nowrap;letter-spacing:-.01em}
 .brand-name span{color:var(--blue)}
-.brand-sub{display:block;font-size:.68rem;color:var(--muted);margin-top:1px;white-space:nowrap;letter-spacing:.02em}
+.brand-sub{display:block;font-size:.72rem;color:var(--muted);margin-top:1px;white-space:nowrap;letter-spacing:.02em}
 .nav-links{display:flex;align-items:center;gap:4px;list-style:none}
 .nav-links a{
   text-decoration:none;color:var(--muted);font-size:.84rem;font-weight:500;
@@ -444,7 +446,7 @@ h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2}
   max-width:1280px;margin:80px auto;
   padding:0 24px;
   display:grid;grid-template-columns:1fr 1fr;
-  gap:80px;align-items:center;
+  gap:80px;align-items:stretch;
 }
 .about-eyebrow{
   display:inline-flex;align-items:center;gap:8px;
@@ -492,15 +494,17 @@ h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2}
 .btn-outline i{transition:transform .25s}
 .btn-outline:hover i{transform:translateX(2px)}
 .about-cta{margin-top:20px}
-/* Image mosaic */
-.about-images{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:12px}
-.about-img-main{grid-column:1/-1;overflow:hidden;border-radius:var(--r);position:relative}
-.about-img-main img{width:100%;height:260px;object-fit:cover;display:block;transition:transform .7s var(--ease)}
-.about-img-main:hover img{transform:scale(1.04)}
-.ai-sm{overflow:hidden;border-radius:var(--r-sm);position:relative}
-.ai-sm img{width:100%;height:160px;object-fit:cover;display:block;transition:transform .7s var(--ease)}
-.ai-sm:hover img{transform:scale(1.06)}
+/* Image card */
+.about-images{display:flex;justify-content:center;align-items:stretch;height:100%}
+.about-images-mobile{display:none;justify-content:center;align-items:center;margin:24px 0}
+.about-img-main{overflow:hidden;border-radius:32px;position:relative;max-width:680px;width:100%;border:1px solid rgba(15,23,42,.08);box-shadow:0 30px 80px rgba(15,23,42,.12);background:#fff;display:flex;flex-direction:column;min-height:100%}
+.about-img-main img{width:100%;height:100%;min-height:440px;object-fit:cover;display:block;transition:transform .7s var(--ease)}
+.about-img-main:hover img{transform:scale(1.03)}
+.about-img-main::after{content:"";position:absolute;inset:0;border:1px solid rgba(59,130,246,.14);pointer-events:none;opacity:0;transition:opacity .35s}
+.about-img-main:hover::after{opacity:1}
+.about-img-main::before{content:"";position:absolute;top:18px;left:18px;right:18px;bottom:18px;border:1px solid rgba(255,255,255,.6);border-radius:28px;pointer-events:none}
 /* subtle badge on about image */
+@media(max-width:600px){.about-images{display:none}.about-images-mobile{display:flex}}
 .about-img-badge{
   position:absolute;bottom:14px;left:14px;
   background:rgba(8,13,20,.7);backdrop-filter:blur(8px);
@@ -511,7 +515,9 @@ h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2}
 }
 .about-img-badge i{color:var(--gold)}
 @media(max-width:1000px){.about-section{grid-template-columns:1fr;gap:48px}}
-@media(max-width:600px){.about-text{align-items:center;text-align:center}.about-stats{justify-content:center}}
+@media(max-width:600px){.about-section{align-items:stretch}
+  .about-images{order:-1;margin-bottom:32px}
+  .about-text{align-items:center;text-align:center}.about-stats{justify-content:center}}
 
 /* ═══════════════════════════════════════════════════
    PRODUCTS SECTION
@@ -1148,11 +1154,16 @@ footer{background:#080d14;color:#94a3b8;padding:60px 20px 28px;border-top:1px so
 }
 .footer-brand .brand-row{display:flex;align-items:center;gap:10px}
 .footer-brand .f-mark{
-  width:36px;height:36px;border-radius:9px;
-  background:linear-gradient(135deg,var(--blue),var(--blue-light));
+  width:42px;height:42px;border-radius:50%;
+  background:#fff;
   display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 30px rgba(14,91,255,.12);
+  border:1px solid rgba(14,91,255,.12);
+  overflow:hidden;
 }
-.footer-brand .f-mark i{color:#fff;font-size:16px}
+.footer-brand .f-mark img{width:80%;height:80%;object-fit:contain;display:block;}
+.footer-brand .f-mark i{display:none}
+.footer-brand .brand-name{color:#fff}
 .footer-brand .brand-name span{color:#60a5fa}
 .footer-brand .brand-sub{font-size:.76rem;color:#64748b;margin-top:4px;font-weight:500}
 .footer-desc{font-size:.8rem;line-height:1.85;margin-bottom:20px;max-width:280px}
@@ -1258,7 +1269,7 @@ footer{background:#080d14;color:#94a3b8;padding:60px 20px 28px;border-top:1px so
 <header class="site-header" id="siteHeader">
   <nav class="nav-inner">
     <a class="brand" href="index.html">
-      <div class="brand-mark"><i class="fa-solid fa-leaf"></i></div>
+      <div class="brand-mark"><img src="assets/logo.png" alt="Aiva Wellness logo"></div>
       <div>
         <span class="brand-name">Aiva<span>Wellness</span></span>
         <small class="brand-sub">Premium Healthcare &amp; Wellness</small>
@@ -1367,6 +1378,12 @@ footer{background:#080d14;color:#94a3b8;padding:60px 20px 28px;border-top:1px so
   <div class="about-text reveal reveal-right">
     <span class="about-eyebrow"><i class="fa-solid fa-circle-info"></i> Who We Are</span>
     <h2>Has wellness stopped feeling simple?</h2>
+    <div class="about-images-mobile reveal reveal-left">
+      <div class="about-img-main">
+        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1200&q=80" alt="Natural Aiva Wellness ingredients"/>
+        <div class="about-img-badge"><i class="fa-solid fa-star"></i> Made in Himachal Pradesh</div>
+      </div>
+    </div>
     <p>At Aiva Wellness, we make it simple again. From our facility in Solan, Himachal Pradesh, we craft precision health formulas designed for the modern Indian body — free from unnecessary additives, binders, and fillers.</p>
     <p>Every product is rooted in Ayurvedic wisdom and validated by modern science, because we believe you deserve both.</p>
     <div class="about-stats">
@@ -1389,14 +1406,8 @@ footer{background:#080d14;color:#94a3b8;padding:60px 20px 28px;border-top:1px so
   </div>
   <div class="about-images reveal reveal-left">
     <div class="about-img-main">
-      <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&q=80" alt="Natural Aiva Wellness ingredients"/>
+      <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1200&q=80" alt="Natural Aiva Wellness ingredients"/>
       <div class="about-img-badge"><i class="fa-solid fa-star"></i> Made in Himachal Pradesh</div>
-    </div>
-    <div class="ai-sm">
-      <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&q=80" alt="Aiva Wellness capsules"/>
-    </div>
-    <div class="ai-sm">
-      <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=600&q=80" alt="Aiva Wellness wellness ritual"/>
     </div>
   </div>
 </section>
@@ -1821,87 +1832,6 @@ footer{background:#080d14;color:#94a3b8;padding:60px 20px 28px;border-top:1px so
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="testimonials-section">
-  <div class="testimonials-inner">
-    <div class="testimonials-header reveal">
-      <span class="section-eyebrow"><i class="fa-solid fa-quote-left"></i> Real Customer Stories</span>
-      <h2 class="section-title">Trusted by <span>10,000+ Customers</span></h2>
-      <p class="section-sub">Don't just take our word for it — hear from people whose lives have changed with Aiva Wellness.</p>
-    </div>
-    <div class="ts-rating-summary reveal">
-      <div>
-        <div class="ts-big-score">4.8</div>
-        <div class="ts-stars-big"></div>
-        <div class="ts-score-sub">Overall Rating</div>
-      </div>
-      <div class="ts-v-divider"></div>
-      <div class="ts-dist">
-        <div class="ts-dist-row"><span>5★</span><div class="ts-dist-bar"><div class="ts-dist-fill" data-w="82"></div></div><span>82%</span></div>
-        <div class="ts-dist-row"><span>4★</span><div class="ts-dist-bar"><div class="ts-dist-fill" data-w="12"></div></div><span>12%</span></div>
-        <div class="ts-dist-row"><span>3★</span><div class="ts-dist-bar"><div class="ts-dist-fill ts-fill-muted" data-w="4"></div></div><span>4%</span></div>
-        <div class="ts-dist-row"><span>2★</span><div class="ts-dist-bar"><div class="ts-dist-fill ts-fill-muted" data-w="2"></div></div><span>2%</span></div>
-      </div>
-      <div class="ts-v-divider"></div>
-      <div>
-        <div class="ts-total-num">928</div>
-        <div class="ts-total-label">Verified Reviews</div>
-      </div>
-    </div>
-    <div class="ts-filter-row reveal">
-      <button class="ts-filter-btn active" onclick="setTFilter('all',this)">All</button>
-      <button class="ts-filter-btn" onclick="setTFilter('Magnesium',this)">Magnesium</button>
-      <button class="ts-filter-btn" onclick="setTFilter('Nattokinase',this)">Nattokinase</button>
-      <button class="ts-filter-btn" onclick="setTFilter('Protein',this)">Protein</button>
-      <button class="ts-filter-btn" onclick="setTFilter('Vitamins',this)">Vitamins</button>
-      <button class="ts-filter-btn" onclick="setTFilter('Immunity',this)">Immunity</button>
-    </div>
-    <div class="ts-cards-grid" id="tsGrid"></div>
-    <div class="ts-nav-row">
-      <button class="ts-nav-btn" onclick="tNav(-1)"><i class="fa-solid fa-chevron-left"></i></button>
-      <div class="ts-dots-wrap" id="tsDots"></div>
-      <span class="ts-page-info" id="tsPageInfo">1 / 2</span>
-      <button class="ts-nav-btn" onclick="tNav(1)"><i class="fa-solid fa-chevron-right"></i></button>
-        </div>
-      </div>
-</section>
-
-<!-- FAQ -->
-<section class="faq-section">
-  <div class="faq-inner">
-    <div class="section-header reveal">
-      <span class="section-eyebrow"><i class="fa-solid fa-circle-question"></i> Got Questions?</span>
-      <h2>Frequently Asked Questions</h2>
-    </div>
-    <div class="reveal">
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">What makes Aiva Wellness different from other supplements?<span class="faq-icon"><i class="fa-solid fa-chevron-down"></i></span></div>
-        <div class="faq-a"><p>Our formulas contain only essential, high-quality ingredients — no fillers, no binders, no artificial additives. We source potent raw materials and use modern extraction methods to preserve their natural efficacy, combining Ayurvedic wisdom with clinical validation.</p></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Are Aiva Wellness products safe for daily use?<span class="faq-icon"><i class="fa-solid fa-chevron-down"></i></span></div>
-        <div class="faq-a"><p>Yes. Our products are formulated with gentle, high-quality ingredients designed for daily routines. They are crafted to support wellbeing without habit-forming substances. If you are pregnant, nursing, or on medication, please consult a healthcare professional before use.</p></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">How quickly will I notice results?<span class="faq-icon"><i class="fa-solid fa-chevron-down"></i></span></div>
-        <div class="faq-a"><p>Results vary per individual. Most users report noticing a difference within 2–4 weeks of consistent daily use. Ayurvedic formulations work best when used regularly over time, supporting cumulative improvement in wellbeing.</p></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Do you ship across India?<span class="faq-icon"><i class="fa-solid fa-chevron-down"></i></span></div>
-        <div class="faq-a"><p>Yes, we ship pan-India. Orders above ₹999 qualify for free shipping. Standard delivery takes 4–7 business days depending on your location.</p></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Can I take more than one Aiva Wellness product at once?<span class="faq-icon"><i class="fa-solid fa-chevron-down"></i></span></div>
-        <div class="faq-a"><p>Yes, our products are designed to complement each other. Many customers use multiple formulas as part of their daily wellness routine. Each product targets a distinct area of health, making them safe to combine for comprehensive support.</p></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">What is your return policy?<span class="faq-icon"><i class="fa-solid fa-chevron-down"></i></span></div>
-        <div class="faq-a"><p>We offer a hassle-free return policy. If you are not satisfied with your purchase, contact us within 7 days of delivery. Our team will assist you with returns or exchanges. Opened products may be evaluated on a case-by-case basis.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- BLOGS -->
 <section class="blogs-section">
   <div class="blogs-inner">
@@ -1985,7 +1915,7 @@ footer{background:#080d14;color:#94a3b8;padding:60px 20px 28px;border-top:1px so
       <div>
         <div class="footer-brand">
           <div class="brand-row">
-            <div class="f-mark"><i class="fa-solid fa-leaf"></i></div>
+            <div class="f-mark"><img src="assets/logo.png" alt="Aiva Wellness logo"></div>
             <span class="brand-name">Aiva<span>Wellness</span></span>
           </div>
           <small class="brand-sub">Premium Healthcare &amp; Wellness</small>
@@ -1994,7 +1924,9 @@ footer{background:#080d14;color:#94a3b8;padding:60px 20px 28px;border-top:1px so
         <div class="footer-social">
           <a class="social-btn" href="https://www.instagram.com/aivawellness/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
           <a class="social-btn" href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a class="social-btn" href="https://www.linkedin.com/company/aivawellness" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
           <a class="social-btn" href="https://wa.me/919175772002" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a class="social-btn" href="https://www.amazon.in/stores/AivaWellness" target="_blank" aria-label="Amazon"><i class="fa-brands fa-amazon"></i></a>
           <a class="social-btn" href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
         </div>
       </div>
