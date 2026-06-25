@@ -140,7 +140,7 @@ h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2}
 .shop-hero{
   position:relative;
   background:linear-gradient(135deg,#080d14 0%,#0f1e3a 45%,#1a3a7a 75%,#1d4ed8 100%);
-  padding:88px 24px 76px;
+  padding:56px 24px 48px;
   overflow:hidden;
 }
 .shop-hero::before{
@@ -161,13 +161,6 @@ h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2}
   pointer-events:none;
 }
 .shop-hero-inner{max-width:860px;margin:0 auto;text-align:center;position:relative;z-index:2}
-.shop-hero-eyebrow{
-  display:inline-flex;align-items:center;gap:8px;
-  font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;
-  color:rgba(255,255,255,.65);font-weight:700;margin-bottom:18px;
-  padding:6px 16px;background:rgba(255,255,255,.07);
-  border-radius:999px;border:1px solid rgba(255,255,255,.13);
-}
 .shop-hero h1{
   font-family:"Cormorant Garamond",serif;
   font-size:clamp(30px,5.5vw,72px);font-weight:600;
@@ -178,13 +171,13 @@ h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2}
   background:linear-gradient(135deg,#60a5fa,#93c5fd);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
-.shop-hero p{color:rgba(255,255,255,.72);font-size:.95rem;margin-bottom:36px;line-height:1.75;max-width:520px;margin-left:auto;margin-right:auto}
+.shop-hero p{color:rgba(255,255,255,.72);font-size:.95rem;margin-bottom:24px;line-height:1.75;max-width:520px;margin-left:auto;margin-right:auto}
 
 /* Search bar */
 .hero-search-wrap{
-  display:flex;max-width:540px;margin:0 auto 40px;
+  display:flex;max-width:540px;margin:24px auto 0;
   border-radius:14px;overflow:hidden;
-  box-shadow:0 16px 48px rgba(0,0,0,.28);
+  box-shadow:0 16px 48px rgba(0,0,0,.18);
   border:1px solid rgba(255,255,255,.15);
 }
 .hero-search-wrap input{
@@ -213,16 +206,6 @@ h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2}
 .hero-stat-num{font-family:"Sora",sans-serif;font-size:1.6rem;font-weight:800;color:#fff;line-height:1}
 .hero-stat-label{font-size:.7rem;color:rgba(255,255,255,.5);margin-top:4px;letter-spacing:.04em}
 @media(max-width:600px){.hero-stat{padding:14px 20px}.hero-stat-num{font-size:1.25rem}}
-
-/* ═══════════════════════════════════════════
-   BREADCRUMB
-═══════════════════════════════════════════ */
-.breadcrumb-bar{background:var(--white);border-bottom:1px solid var(--border)}
-.breadcrumb-inner{max-width:1320px;margin:0 auto;padding:11px 24px;display:flex;align-items:center;gap:7px;font-size:.78rem}
-.breadcrumb-inner a{color:var(--muted);text-decoration:none;transition:color .2s}
-.breadcrumb-inner a:hover{color:var(--blue)}
-.breadcrumb-inner .bc-sep{color:var(--border);font-size:10px}
-.breadcrumb-inner .bc-cur{color:var(--ink);font-weight:600}
 
 /* ═══════════════════════════════════════════
    SHOP LAYOUT
@@ -421,7 +404,7 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
 
 /* Buy button */
 .btn-cart{
-  width:100%;background:var(--black);color:#fff;
+  flex:1;width:auto;min-width:0;background:linear-gradient(135deg,#1f2937,#0f172a);color:#fff;
   border:none;padding:13px 20px;font-size:.72rem;
   letter-spacing:.08em;text-transform:uppercase;
   cursor:pointer;font-weight:700;font-family:"Inter",sans-serif;
@@ -429,10 +412,38 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
   display:flex;align-items:center;justify-content:center;gap:8px;
   margin-top:auto;border-radius:12px;position:relative;overflow:hidden;
 }
-.btn-cart::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,var(--blue),#1e40af);opacity:0;transition:opacity .3s}
+.btn-cart::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(96,165,250,.18),rgba(15,23,42,.45));opacity:0;transition:opacity .3s}
 .btn-cart:hover::before{opacity:1}
-.btn-cart:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(29,78,216,.3)}
+.btn-cart:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(15,23,42,.3)}
 .btn-cart>*{position:relative;z-index:1}
+
+.buy-actions{display:flex;align-items:stretch;justify-content:flex-start;gap:10px;width:100%;margin-top:auto;flex-wrap:wrap}
+.btn-cart{
+  min-height:48px;
+}
+.btn-share-inline{
+  width:48px;height:48px;border-radius:14px;
+  border:1px solid rgba(30,64,175,.25);background:#eff6ff;color:#1d4ed8;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:16px;transition:all .25s var(--ease);
+}
+.btn-share-inline:hover{background:#1d4ed8;color:#fff;transform:translateY(-1px);box-shadow:0 10px 24px rgba(59,130,246,.25)}
+
+.share-popover{
+  position:absolute;top:12px;right:12px;
+  background:#fff;border:1px solid var(--border);border-radius:16px;
+  box-shadow:0 24px 60px rgba(15,23,42,.18);
+  padding:12px;display:none;flex-direction:column;gap:8px;z-index:10;
+  min-width:190px;
+}
+.share-popover.active{display:flex}
+.share-option{
+  width:100%;background:var(--blue-soft);border:none;padding:10px 12px;
+  border-radius:12px;color:var(--blue);font-size:.8rem;font-weight:700;
+  display:flex;align-items:center;gap:10px;cursor:pointer;transition:all .2s;
+}
+.share-option:hover{background:var(--blue);color:#fff}
+.share-option i{width:18px;text-align:center}
 
 /* ── LIST VIEW ── */
 .products-grid.list-view .product-card{flex-direction:row;border-radius:16px}
@@ -521,6 +532,7 @@ footer{background:#080d14;color:#94a3b8;padding:60px 20px 28px;border-top:1px so
 .footer-brand .brand-row{display:flex;align-items:center;gap:10px}
 .footer-brand .f-mark{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--blue),var(--blue-light));display:flex;align-items:center;justify-content:center}
 .footer-brand .f-mark i{color:#fff;font-size:16px}
+.footer-brand .brand-name .brand-aiva{color:#fff}
 .footer-brand .brand-name span{color:#60a5fa}
 .footer-brand .brand-sub{font-size:.76rem;color:#64748b;margin-top:4px;font-weight:500}
 .footer-desc{font-size:.8rem;line-height:1.85;margin-bottom:20px;max-width:280px}
@@ -574,6 +586,11 @@ footer{background:#080d14;color:#94a3b8;padding:60px 20px 28px;border-top:1px so
 }
 @media(max-width:520px){
   .products-grid,.products-grid.list-view{grid-template-columns:1fr}
+  .hero-stats{display:none}
+  .hero-search-wrap{flex-direction:column;max-width:100%;margin:24px 16px 0}
+  .hero-search-wrap input,.hero-search-wrap button{width:100%}
+  .hero-search-wrap button{padding:14px 18px;margin-top:10px}
+  .hero-search-wrap input{padding:15px 16px}
   .hero-stats{flex-wrap:wrap}
   .hero-stat{border-right:none;border-bottom:1px solid rgba(255,255,255,.08);width:50%}
   .hero-stat:last-child,.hero-stat:nth-child(2n){border-right:none}
@@ -588,17 +605,6 @@ footer{background:#080d14;color:#94a3b8;padding:60px 20px 28px;border-top:1px so
   border-radius:8px;
 }
 
-/* ── floating whatsapp ── */
-.wa-float{
-  position:fixed;bottom:28px;left:28px;z-index:999;
-  width:52px;height:52px;border-radius:50%;
-  background:#25d366;color:#fff;
-  display:flex;align-items:center;justify-content:center;
-  font-size:24px;text-decoration:none;
-  box-shadow:0 8px 28px rgba(37,211,102,.4);
-  transition:all .3s var(--ease);
-}
-.wa-float:hover{transform:scale(1.12) translateY(-3px);box-shadow:0 14px 40px rgba(37,211,102,.5);color:#fff}
 </style>
 </head>
 <body>
@@ -658,30 +664,20 @@ footer{background:#080d14;color:#94a3b8;padding:60px 20px 28px;border-top:1px so
 <section class="shop-hero">
   <div class="shop-hero-blob"></div>
   <div class="shop-hero-inner">
-    <div class="shop-hero-eyebrow"><i class="fa-solid fa-bag-shopping"></i> Our Full Collection</div>
     <h1>Premium <span>Wellness</span> Products</h1>
     <p>Science-backed supplements crafted for your health goals. 100% Ayurvedic &amp; Natural, lab-tested quality from Himachal Pradesh.</p>
-    <div class="hero-search-wrap">
-      <input type="text" id="searchInput" placeholder="Search products, categories…" oninput="filterProducts()"/>
-      <button onclick="filterProducts()"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
-    </div>
     <div class="hero-stats">
       <div class="hero-stat"><div class="hero-stat-num">25+</div><div class="hero-stat-label">Products</div></div>
       <div class="hero-stat"><div class="hero-stat-num">10K+</div><div class="hero-stat-label">Customers</div></div>
       <div class="hero-stat"><div class="hero-stat-num">4.8★</div><div class="hero-stat-label">Avg Rating</div></div>
       <div class="hero-stat"><div class="hero-stat-num">100%</div><div class="hero-stat-label">Genuine</div></div>
     </div>
+    <div class="hero-search-wrap">
+      <input type="text" id="searchInput" placeholder="Search products, categories…" oninput="filterProducts()"/>
+      <button onclick="filterProducts()"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+    </div>
   </div>
 </section>
-
-<!-- BREADCRUMB -->
-<div class="breadcrumb-bar">
-  <div class="breadcrumb-inner">
-    <a href="index.html"><i class="fa-solid fa-house" style="font-size:11px"></i></a>
-    <span class="bc-sep"><i class="fa-solid fa-chevron-right" style="font-size:9px"></i></span>
-    <span class="bc-cur">Shop</span>
-  </div>
-</div>
 
 <!-- SHOP WRAP -->
 <div class="shop-wrap">
@@ -825,15 +821,17 @@ footer{background:#080d14;color:#94a3b8;padding:60px 20px 28px;border-top:1px so
         <div class="footer-brand">
           <div class="brand-row">
             <div class="f-mark"><i class="fa-solid fa-leaf"></i></div>
-            <span class="brand-name">Aiva<span>Wellness</span></span>
+            <span class="brand-name"><span class="brand-aiva">Aiva</span><span>Wellness</span></span>
           </div>
           <small class="brand-sub">Premium Healthcare &amp; Wellness</small>
         </div>
         <div class="footer-desc">Premium Healthcare &amp; Wellness Solutions from Solan, Himachal Pradesh. Science-backed Ayurvedic formulations crafted for the health of every Indian family.</div>
         <div class="footer-social">
-          <a class="social-btn" href="https://www.instagram.com/aivawellness/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a class="social-btn" href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
           <a class="social-btn" href="https://wa.me/919175772002" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a class="social-btn" href="https://www.instagram.com/aivawellness/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a class="social-btn" href="https://www.linkedin.com/company/aivawellness" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a class="social-btn" href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a class="social-btn" href="https://www.amazon.in/" target="_blank" aria-label="Amazon"><i class="fa-brands fa-amazon"></i></a>
           <a class="social-btn" href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
         </div>
       </div>
@@ -875,11 +873,6 @@ footer{background:#080d14;color:#94a3b8;padding:60px 20px 28px;border-top:1px so
     </div>
   </div>
 </footer>
-
-<!-- WhatsApp Float -->
-<a class="wa-float" href="https://wa.me/919175772002" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-  <i class="fa-brands fa-whatsapp"></i>
-</a>
 
 <!-- Toast container -->
 <div class="toast-wrap" id="toastWrap"></div>
@@ -944,9 +937,15 @@ function renderCard(p,delay){
         <img class="img-hover" src="${p.img2}" alt="${p.name}" onerror="this.src='${PLACEHOLDER}'"/>
       </a>
       <div class="p-actions">
-        <button class="p-action-btn" title="Add to Wishlist" onclick="handleWishlist(${p.id})"><i class="fa-regular fa-heart"></i></button>
         <button class="p-action-btn" title="Quick View" onclick="window.location.href='product-details.html'"><i class="fa-regular fa-eye"></i></button>
-        <button class="p-action-btn" title="Share"><i class="fa-solid fa-share-nodes"></i></button>
+        <button class="p-action-btn" title="Share" onclick="toggleShareMenu(event, ${p.id})"><i class="fa-solid fa-share-nodes"></i></button>
+      </div>
+      <div class="share-popover" id="sharePopover-${p.id}" aria-hidden="true">
+        <button type="button" class="share-option" onclick="shareProduct(${p.id}, 'whatsapp')"><i class="fa-brands fa-whatsapp"></i> WhatsApp</button>
+        <button type="button" class="share-option" onclick="shareProduct(${p.id}, 'copy')"><i class="fa-regular fa-copy"></i> Copy Link</button>
+        <button type="button" class="share-option" onclick="shareProduct(${p.id}, 'email')"><i class="fa-regular fa-envelope"></i> Email</button>
+        <button type="button" class="share-option" onclick="shareProduct(${p.id}, 'facebook')"><i class="fa-brands fa-facebook-f"></i> Facebook</button>
+        <button type="button" class="share-option" onclick="shareProduct(${p.id}, 'telegram')"><i class="fa-brands fa-telegram-plane"></i> Telegram</button>
       </div>
     </div>
     <div class="product-info">
@@ -958,9 +957,14 @@ function renderCard(p,delay){
         <span class="original-price">${fmtINR(p.old)}</span>
         <span class="save-badge">Save ${saving}%</span>
       </div>
-      <button class="btn-cart" onclick="window.location.href='product-details.html'">
-        <i class="fa-solid fa-bag-shopping"></i><span>Buy Now</span>
-      </button>
+      <div class="buy-actions">
+        <button class="btn-cart" onclick="window.location.href='product-details.html'">
+          <i class="fa-regular fa-eye"></i><span>View Product</span>
+        </button>
+        <button class="btn-share-inline" type="button" title="Share" onclick="toggleShareMenu(event, ${p.id})">
+          <i class="fa-solid fa-share-nodes"></i>
+        </button>
+      </div>
     </div>
   </div>`;
 }
@@ -1094,10 +1098,60 @@ function setView(v){
   }
 }
 
-/* ── wishlist ── */
-function handleWishlist(id){
-  const p=PRODUCTS.find(x=>x.id===id);
-  showToast('❤️',p?p.name.slice(0,30)+'… added to wishlist':'Done!');
+function toggleShareMenu(event, id){
+  event.stopPropagation();
+  closeAllShareMenus();
+  const popover=document.getElementById(`sharePopover-${id}`);
+  if(popover){
+    popover.classList.toggle('active');
+    popover.setAttribute('aria-hidden', popover.classList.contains('active') ? 'false' : 'true');
+  }
+}
+
+function closeAllShareMenus(){
+  document.querySelectorAll('.share-popover.active').forEach(el=>{
+    el.classList.remove('active');
+    el.setAttribute('aria-hidden','true');
+  });
+}
+
+document.addEventListener('click', e=>{
+  if(!e.target.closest('.share-popover') && !e.target.closest('.btn-share-inline') && !e.target.closest('.p-action-btn')){
+    closeAllShareMenus();
+  }
+});
+
+function shareProduct(id, type){
+  const url=window.location.origin+window.location.pathname.replace(/\/[^\/]*$/,'/')+'product-details.html';
+  const title='Check out this product on Aiva Wellness';
+  const text='Discover wellness products with Aiva.';
+  closeAllShareMenus();
+
+  if(type==='whatsapp'){
+    window.open(`https://wa.me/?text=${encodeURIComponent(title+' '+url)}`,'_blank');
+    return;
+  }
+
+  if(type==='copy'){
+    navigator.clipboard.writeText(url).then(()=>showToast('✅','Link copied to clipboard'))
+      .catch(()=>showToast('⚠️','Copy failed'));
+    return;
+  }
+
+  if(type==='email'){
+    window.location.href=`mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(text+' '+url)}`;
+    return;
+  }
+
+  if(type==='facebook'){
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,'_blank');
+    return;
+  }
+
+  if(type==='telegram'){
+    window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`,'_blank');
+    return;
+  }
 }
 
 /* ── toast ── */
