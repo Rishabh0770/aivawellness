@@ -33,16 +33,88 @@ h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.2}
 a{text-decoration:none}
 
 /* PRELOADER */
-#preloader{position:fixed;inset:0;background:var(--black);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;transition:opacity .6s var(--ease),visibility .6s}
-#preloader.hide{opacity:0;visibility:hidden;pointer-events:none}
-.pl-logo{width:64px;height:64px;border-radius:14px;background:linear-gradient(135deg,#1d4ed8,#3b82f6);display:flex;align-items:center;justify-content:center;animation:plPulse 1.6s ease-in-out infinite}
-.pl-logo i{font-size:28px;color:#fff}
-.pl-brand{font-family:"Sora",sans-serif;font-size:1.1rem;font-weight:800;color:#fff;letter-spacing:.02em}
-.pl-brand span{color:#60a5fa}
-.pl-bar{width:180px;height:2px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden;margin-top:4px}
-.pl-fill{height:100%;background:linear-gradient(90deg,#1d4ed8,#60a5fa);border-radius:2px;animation:plBar 1.2s ease-out forwards}
-@keyframes plPulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(59,130,246,.4)}50%{transform:scale(1.06);box-shadow:0 0 0 14px rgba(59,130,246,0)}}
-@keyframes plBar{from{width:0}to{width:100%}}
+#preloader {
+  position: fixed; inset: 0;
+  background: linear-gradient(160deg, #0b1120 0%, #0f1a2e 60%, #0d1525 100%);
+  z-index: 9999; display: flex; align-items: center;
+  justify-content: center; flex-direction: column;
+  transition: opacity .6s ease, visibility .6s;
+}
+#preloader.hide { opacity: 0; visibility: hidden; pointer-events: none; }
+
+.pl-glow {
+  position: absolute; width: 260px; height: 260px;
+  background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: glowPulse 3s ease-in-out infinite;
+}
+@keyframes glowPulse {
+  0%,100% { opacity: .5; transform: scale(1); }
+  50%      { opacity: 1;  transform: scale(1.15); }
+}
+
+.pl-card {
+  position: relative;
+  background: rgba(236,252,228,0.95);
+  border-radius: 24px;
+  padding: 40px 48px 36px;
+  display: flex; flex-direction: column; align-items: center;
+  box-shadow:
+    0 0 0 0.5px rgba(164,230,134,0.3),
+    0 4px 6px rgba(14,57,16,0.15),
+    0 24px 48px rgba(14,57,16,0.2),
+    inset 0 1px 0 rgba(255,255,255,0.7);
+  animation: cardIn .7s cubic-bezier(0.34,1.56,0.64,1) forwards;
+}
+.pl-card::before, .pl-card::after {
+  content: ''; position: absolute;
+  width: 20px; height: 20px;
+  border-color: #16a34a; border-style: solid; opacity: .25;
+}
+.pl-card::before { top:14px; left:14px; border-width: 1.5px 0 0 1.5px; border-radius: 4px 0 0 0; }
+.pl-card::after  { bottom:14px; right:14px; border-width: 0 1.5px 1.5px 0; border-radius: 0 0 4px 0; }
+@keyframes cardIn {
+  from { opacity:0; transform: translateY(20px) scale(0.95); }
+  to   { opacity:1; transform: translateY(0) scale(1); }
+}
+
+.pl-logo-img {
+  width: 72px; height: 72px; object-fit: contain;
+  animation: logoIn .6s cubic-bezier(0.34,1.56,0.64,1) .2s both;
+}
+@keyframes logoIn {
+  from { opacity:0; transform: scale(0.7); }
+  to   { opacity:1; transform: scale(1); }
+}
+
+.pl-divider {
+  width:100%; height:.5px;
+  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.08), transparent);
+  margin: 20px 0 18px;
+}
+
+.pl-brand { font-family:'Sora',sans-serif; font-size:1.25rem; font-weight:800; color:#0f172a; margin-bottom:4px; }
+.pl-brand span { color: #1d4ed8; }
+.pl-tagline  { font-size:.7rem; font-weight:600; letter-spacing:.18em; color:#94a3b8; text-transform:uppercase; margin-bottom:24px; }
+
+.pl-bar-wrap { width:100%; display:flex; flex-direction:column; gap:8px; }
+.pl-bar      { width:100%; height:2px; background:rgba(0,0,0,0.06); border-radius:2px; overflow:hidden; }
+.pl-fill     {
+  height:100%;
+  background: linear-gradient(90deg, #1d4ed8, #3b82f6, #60a5fa);
+  border-radius:2px;
+  animation: plBar 1.8s cubic-bezier(0.25,1,0.5,1) .4s both;
+}
+@keyframes plBar { from{width:0} to{width:100%} }
+
+.pl-status      { display:flex; justify-content:space-between; align-items:center; }
+.pl-status-text { font-size:11px; color:#94a3b8; letter-spacing:.04em; }
+.pl-dots        { display:flex; gap:4px; }
+.pl-dots span   { width:4px; height:4px; border-radius:50%; background:#3b82f6; opacity:.3; animation:dotPulse 1.2s ease-in-out infinite; }
+.pl-dots span:nth-child(2) { animation-delay:.2s; }
+.pl-dots span:nth-child(3) { animation-delay:.4s; }
+@keyframes dotPulse { 0%,100%{opacity:.25} 50%{opacity:1} }
+
 
 /* ANNOUNCEMENT BAR */
 .ann-bar{background:linear-gradient(90deg,#1e3a8a 0%,#1d4ed8 50%,#1e3a8a 100%);color:#fff;font-size:.72rem;letter-spacing:.06em;padding:9px 0;overflow:hidden;white-space:nowrap;border-bottom:1px solid rgba(255,255,255,.1)}
@@ -399,9 +471,20 @@ footer{background:#080d14;color:#94a3b8;padding:60px 20px 28px;border-top:1px so
 
 <!-- PRELOADER -->
 <div id="preloader">
-  <div class="pl-logo"><i class="fa-solid fa-leaf"></i></div>
-  <div class="pl-brand">Aiva<span>Wellness</span></div>
-  <div class="pl-bar"><div class="pl-fill"></div></div>
+  <div class="pl-glow"></div>
+  <div class="pl-card">
+    <img class="pl-logo-img" src="assets/logo.png" alt="AivaWellness Logo" />
+    <div class="pl-divider"></div>
+    <div class="pl-brand">Aiva<span>Wellness</span></div>
+    <div class="pl-tagline">Your Health, Our Priority</div>
+    <div class="pl-bar-wrap">
+      <div class="pl-bar"><div class="pl-fill"></div></div>
+      <div class="pl-status">
+        <span class="pl-status-text">Loading experience...</span>
+        <div class="pl-dots"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- ANNOUNCEMENT BAR -->
@@ -446,15 +529,6 @@ footer{background:#080d14;color:#94a3b8;padding:60px 20px 28px;border-top:1px so
     <a href="contact.html">Contact</a>
     <a href="tel:+917807751710" class="m-cta"><i class="fa-solid fa-phone"></i> Call Now</a>
   </nav>
-</div>
-
-<!-- BREADCRUMB -->
-<div class="breadcrumb-bar">
-  <div class="breadcrumb-inner">
-    <a href="index.html">Home</a>
-    <span class="sep">&#8250;</span>
-    <span class="current">About Us</span>
-  </div>
 </div>
 
 <!-- STICKY TABS -->
